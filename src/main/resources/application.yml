@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: VEHICLE-MANAGEMENT-SERVICE
+
+  datasource:
+    url: jdbc:mysql://serversql.mysql.database.azure.com:3306/vehicle_management?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: wilverar
+    password: warraw*280101
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
