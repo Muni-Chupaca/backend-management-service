@@ -19,7 +19,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/authorized-vehicle", produces = "application/json")
-@CrossOrigin(origins = "*")
 @Tag(name = "Authorized Vehicles", description = "The Authorized Vehicles API")
 public class AuthorizedVehicleController {
 
@@ -57,6 +56,13 @@ public class AuthorizedVehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(authorizedVehicleResponse);
     }
     @Transactional
+    @PostMapping("/batch")
+    public ResponseEntity<Boolean> createBatch(@Valid @RequestBody List<AuthorizedVehicle> authorizedVehicleRequests) {
+        Boolean created = authorizedVehicleService.createBatch(authorizedVehicleRequests);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+    @Transactional
     @PostMapping
     public ResponseEntity<AuthorizedVehicleResponse> create(@Valid @RequestBody AuthorizedVehicleRequest authorizedVehicleRequest) {
         Long id = authorizedVehicleService.createAuthorizedVehicle(authorizedVehicleRequest);
@@ -65,14 +71,6 @@ public class AuthorizedVehicleController {
         AuthorizedVehicleResponse authorizedVehicleResponse = modelMapper.map(authorizedVehicleCreated, AuthorizedVehicleResponse.class);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(authorizedVehicleResponse);
-    }
-    @Transactional(readOnly = true)
-    @GetMapping
-    public ResponseEntity<List<AuthorizedVehicleResponse>> getAll() {
-        List<AuthorizedVehicle> authorizedVehicles = authorizedVehicleService.getAllAuthorizedVehicles();
-        List<AuthorizedVehicleResponse> authorizedVehicleResponse = authorizedVehicles.stream().map(x -> modelMapper.map(x, AuthorizedVehicleResponse.class)).toList();
-
-        return ResponseEntity.status(HttpStatus.OK).body(authorizedVehicleResponse);
     }
     @Transactional
     @PutMapping("/{id}")

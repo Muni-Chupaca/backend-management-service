@@ -11,19 +11,12 @@ import lombok.Setter;
 public class AuthorizedVehicleResponse {
 
     private Long id;
-
     private String licensePlate;
-
     private String brand;
-
     private String model;
-
     private String status;
-
     private String modality;
-
     private String circulation;
-
     private String route;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
@@ -33,12 +26,8 @@ public class AuthorizedVehicleResponse {
     private String expirationDate;
 
     private String fleetNumber;
-
     private String circulationCard;
-
     private String ownerName;
-
     private String documentNumber;
-
     private String affiliatedCompany;
 }

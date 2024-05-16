@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface AuthorizedVehicleService {
     Long createAuthorizedVehicle(AuthorizedVehicleRequest authorizedVehicleRequest);
-    List<AuthorizedVehicle> getAllAuthorizedVehicles();
+    boolean createBatch(List<AuthorizedVehicle> authorizedVehicleRequests);
     Optional<AuthorizedVehicle> getAuthorizedVehicleById(Long id);
     AuthorizedVehicle updateAuthorizedVehicle(Long id, AuthorizedVehicleRequest authorizedVehicleRequest);
     void deleteAuthorizedVehicle(Long id);

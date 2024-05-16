@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class AuthorizedVehicleRequest {
 
     @NotBlank(message = "License plate is required")
-    @Size(min = 6, max = 10, message = "License plate must be between 6 and 10 characters")
+    @Size(min = 3, max = 10, message = "License plate must be between 6 and 10 characters")
     private String licensePlate;
 
     @NotBlank(message = "Brand is required")
@@ -39,12 +39,12 @@ public class AuthorizedVehicleRequest {
     private String route;
 
     @NotBlank(message = "Issue date is required")
-    @Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "Issue date must be in the format DD/MM/YYYY")
+    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/(19|20|21)\\d{2}$", message = "Issue date must be in the format DD/MM/YYYY")
     @Size(min = 10, max = 10, message = "Issue date must be 10 characters")
     private String issueDate;
 
     @NotBlank(message = "Expiration date is required")
-    @Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "Expiration date must be in the format DD/MM/YYYY")
+    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/(19|20|21)\\d{2}$", message = "Expiration date must be in the format DD/MM/YYYY")
     @Size(min = 10, max = 10, message = "Expiration date must be 10 characters")
     private String expirationDate;
 

@@ -35,8 +35,8 @@ public class AuthorizedVehicleImpl implements AuthorizedVehicleService {
     }
 
     @Override
-    public List<AuthorizedVehicle> getAllAuthorizedVehicles() {
-        return authorizedVehicleRepository.findAll();
+    public boolean createBatch(List<AuthorizedVehicle> authorizedVehicleRequests) {
+        return !authorizedVehicleRepository.saveAll(authorizedVehicleRequests).isEmpty();
     }
 
     @Override

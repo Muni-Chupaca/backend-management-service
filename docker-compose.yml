@@ -1,0 +1,21 @@
+services:
+  api-consult:
+    container_name: backend-api-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-consult:latest
+    ports:
+      - 80:80
+    expose:
+      - 80
+    volumes:
+      - ./target:/app/target
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge

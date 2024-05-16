@@ -1,4 +1,4 @@
-package pe.gob.munichupaca.apiservice.shared.infrastructure.configuration.mapper;
+package pe.gob.munichupaca.apiservice.shared.infrastructure.config.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
