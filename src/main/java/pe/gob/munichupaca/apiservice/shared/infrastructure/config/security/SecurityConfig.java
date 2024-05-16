@@ -34,7 +34,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
     private final JwtUtil jwtUtil;
-    private final String ALLOWED_ORIGIN = "http://localhost:4200";
+    private final String ALLOWED_ORIGIN = "https://web-frontend-service.azurewebsites.net";
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager) throws Exception {

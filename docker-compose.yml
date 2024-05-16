@@ -6,9 +6,9 @@ services:
       dockerfile: Dockerfile
     image: api-consult:latest
     ports:
-      - 80:80
+      - 8080:8080
     expose:
-      - 80
+      - 8080
     volumes:
       - ./target:/app/target
     environment:
