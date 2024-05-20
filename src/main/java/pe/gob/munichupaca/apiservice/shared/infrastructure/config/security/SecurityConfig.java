@@ -60,7 +60,7 @@ public class SecurityConfig {
                     auth.requestMatchers(SWAGGER_UI_AUTH_WHITELIST).permitAll();
                     auth.anyRequest().authenticated();
                 })
-                .sessionManagement(session -> { session.sessionCreationPolicy(SessionCreationPolicy.STATELESS); })
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilter(jwtAuthenticationFilter)
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
