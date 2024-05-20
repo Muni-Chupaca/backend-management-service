@@ -34,7 +34,8 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
     private final JwtUtil jwtUtil;
-    private final String ALLOWED_ORIGIN = "https://web-frontend-service.azurewebsites.net";
+    //private final String ALLOWED_ORIGIN = "https://web-frontend-service.azurewebsites.net";
+    private final String ALLOWED_ORIGIN = "http://localhost:4200";
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager) throws Exception {
@@ -54,7 +55,8 @@ public class SecurityConfig {
                 }))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/api/v1/auth/log-in", "/api/v1/authorized-vehicle/all/license-plates", "/api/v1/authorized-vehicle/by/license-plate", "/api/v1/authorized-vehicle/all").permitAll();
+                    auth.requestMatchers("/api/v1/auth/log-in").permitAll();
+                    auth.requestMatchers(ENDPOINTS_ROL_INVITED).permitAll();
                     auth.requestMatchers(SWAGGER_UI_AUTH_WHITELIST).permitAll();
                     auth.anyRequest().authenticated();
                 })
@@ -64,6 +66,7 @@ public class SecurityConfig {
                 .build();
     }
     private static final String[] SWAGGER_UI_AUTH_WHITELIST = { "/v3/api-docs/**", "/swagger-ui/**" };
+    private static final String[] ENDPOINTS_ROL_INVITED = { "/api/v1/authorized-vehicle/get-all/license-plates", "/api/v1/authorized-vehicle/search-by/license-plate" };
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

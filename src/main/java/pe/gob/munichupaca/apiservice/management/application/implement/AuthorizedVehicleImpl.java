@@ -4,9 +4,9 @@ import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import pe.gob.munichupaca.apiservice.management.domain.models.AuthorizedVehicle;
+import pe.gob.munichupaca.apiservice.management.domain.models.entity.AuthorizedVehicle;
 import pe.gob.munichupaca.apiservice.management.domain.services.AuthorizedVehicleService;
-import pe.gob.munichupaca.apiservice.management.infrastructure.repositories.AuthorizedVehicleRepository;
+import pe.gob.munichupaca.apiservice.management.infrastructure.repository.AuthorizedVehicleRepository;
 import pe.gob.munichupaca.apiservice.management.infrastructure.dto.request.AuthorizedVehicleRequest;
 import pe.gob.munichupaca.apiservice.shared.domain.exceptions.ResourceNotFoundException;
 
@@ -25,9 +25,6 @@ public class AuthorizedVehicleImpl implements AuthorizedVehicleService {
         if (authorizedVehicleRepository.existsByLicensePlate(authorizedVehicleRequest.getLicensePlate())) {
             throw new ValidationException("License Plate already exists");
         }
-        if (authorizedVehicleRepository.existsByDocumentNumber(authorizedVehicleRequest.getDocumentNumber())) {
-            throw new ValidationException("Document Number already exists");
-        }
         AuthorizedVehicle authorizedVehicle = new AuthorizedVehicle();
         modelMapper.map(authorizedVehicleRequest, authorizedVehicle);
 
@@ -35,7 +32,7 @@ public class AuthorizedVehicleImpl implements AuthorizedVehicleService {
     }
 
     @Override
-    public boolean createBatch(List<AuthorizedVehicle> authorizedVehicleRequests) {
+    public boolean createUpload(List<AuthorizedVehicle> authorizedVehicleRequests) {
         return !authorizedVehicleRepository.saveAll(authorizedVehicleRequests).isEmpty();
     }
 
@@ -69,11 +66,6 @@ public class AuthorizedVehicleImpl implements AuthorizedVehicleService {
     @Override
     public Optional<AuthorizedVehicle> getAuthorizedVehicleByLicensePlate(String plate) {
         return authorizedVehicleRepository.findByLicensePlate(plate);
-    }
-
-    @Override
-    public boolean checkByDocumentNumber(String documentNumber) {
-        return authorizedVehicleRepository.existsByDocumentNumber(documentNumber);
     }
 
     @Override

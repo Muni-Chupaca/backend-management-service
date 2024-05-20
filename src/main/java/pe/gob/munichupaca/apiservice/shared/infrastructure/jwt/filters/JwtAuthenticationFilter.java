@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pe.gob.munichupaca.apiservice.auth.domain.models.entities.UserEntity;
+import pe.gob.munichupaca.apiservice.auth.domain.models.entity.UserEntity;
 import pe.gob.munichupaca.apiservice.shared.infrastructure.jwt.utils.JwtUtil;
 
 import java.io.IOException;

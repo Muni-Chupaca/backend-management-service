@@ -1,4 +1,4 @@
-package pe.gob.munichupaca.apiservice.auth.domain.models.entities;
+package pe.gob.munichupaca.apiservice.auth.domain.models.entity;
 
 
 import jakarta.persistence.*;

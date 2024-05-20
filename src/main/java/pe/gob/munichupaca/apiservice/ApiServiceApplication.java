@@ -8,10 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pe.gob.munichupaca.apiservice.auth.domain.models.entities.RoleEntity;
-import pe.gob.munichupaca.apiservice.auth.domain.models.entities.UserEntity;
+import pe.gob.munichupaca.apiservice.auth.domain.models.entity.RoleEntity;
+import pe.gob.munichupaca.apiservice.auth.domain.models.entity.UserEntity;
 import pe.gob.munichupaca.apiservice.auth.domain.models.enums.RoleEnum;
-import pe.gob.munichupaca.apiservice.auth.infrastructure.repositories.UserRepository;
+import pe.gob.munichupaca.apiservice.auth.infrastructure.repository.UserRepository;
 
 import java.util.Set;
 

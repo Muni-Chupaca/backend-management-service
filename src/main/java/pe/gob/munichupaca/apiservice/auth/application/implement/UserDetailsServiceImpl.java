@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pe.gob.munichupaca.apiservice.auth.domain.models.entities.UserEntity;
-import pe.gob.munichupaca.apiservice.auth.infrastructure.repositories.UserRepository;
+import pe.gob.munichupaca.apiservice.auth.domain.models.entity.UserEntity;
+import pe.gob.munichupaca.apiservice.auth.infrastructure.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -33,24 +33,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .collect(Collectors.toSet());
 
         return new User(userEntity.getUsername(),
-                userEntity.getPassword(),
-                true,
-                true,
-                true,
-                true,
-                authorities);
+                userEntity.getPassword(), true, true, true, true, authorities);
     }
 
     public UserEntity findUser(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("The user [" + username + "] not exist."));
     }
+
     public UserEntity getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            System.out.println("UserDetailsServiceImpl.getCurrentUser: " + userDetails.getUsername());
             return findUser(userDetails.getUsername());
         }
         else {

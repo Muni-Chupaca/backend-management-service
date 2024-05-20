@@ -1,4 +1,4 @@
-package pe.gob.munichupaca.apiservice.management.domain.models;
+package pe.gob.munichupaca.apiservice.management.domain.models.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ public class AuthorizedVehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "license_plate", unique = true, nullable = false, length = 10)
+    @Column(name = "license_plate", unique = true, nullable = false, length = 8)
     private String licensePlate;
 
     @Column(name = "brand", nullable = false, length = 25)
@@ -38,10 +38,10 @@ public class AuthorizedVehicle {
     @Column(name = "route", nullable = false, length = 50)
     private String route;
 
-    @Column(name = "issue_date", nullable = false, length = 10)
+    @Column(name = "issue_date", nullable = false)
     private String issueDate;
 
-    @Column(name = "expiration_date", nullable = false, length = 10)
+    @Column(name = "expiration_date", nullable = false)
     private String expirationDate;
 
     @Column(name = "fleet_number", nullable = false, length = 25)
@@ -53,7 +53,7 @@ public class AuthorizedVehicle {
     @Column(name = "owner_name", nullable = false, length = 50)
     private String ownerName;
 
-    @Column(name = "document_number", unique = true, nullable = false, length = 25)
+    @Column(name = "document_number", nullable = false, length = 25)
     private String documentNumber;
 
     @Column(name = "affiliated_company", nullable = false, length = 50)

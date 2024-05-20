@@ -1,4 +1,4 @@
-package pe.gob.munichupaca.apiservice.auth.domain.models.entities;
+package pe.gob.munichupaca.apiservice.auth.domain.models.entity;
 
 
 import jakarta.persistence.*;
@@ -29,7 +29,7 @@ public class UserEntity {
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = RoleEntity.class, cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "user_roles",
+            name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

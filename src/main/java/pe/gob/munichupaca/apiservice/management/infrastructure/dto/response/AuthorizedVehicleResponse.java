@@ -1,6 +1,5 @@
 package pe.gob.munichupaca.apiservice.management.infrastructure.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,13 +17,8 @@ public class AuthorizedVehicleResponse {
     private String modality;
     private String circulation;
     private String route;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String issueDate;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String expirationDate;
-
     private String fleetNumber;
     private String circulationCard;
     private String ownerName;
