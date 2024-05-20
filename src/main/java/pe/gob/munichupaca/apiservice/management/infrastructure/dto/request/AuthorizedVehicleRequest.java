@@ -40,13 +40,9 @@ public class AuthorizedVehicleRequest {
     private String route;
 
     @NotBlank(message = "Issue date is required")
-    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/(19|20|21)\\d{2}$", message = "Issue date must be in the format DD/MM/YYYY")
-    @Size(min = 10, max = 10, message = "Issue date must be 10 characters")
     private String issueDate;
 
     @NotBlank(message = "Expiration date is required")
-    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/(19|20|21)\\d{2}$", message = "Expiration date must be in the format DD/MM/YYYY")
-    @Size(min = 10, max = 10, message = "Expiration date must be 10 characters")
     private String expirationDate;
 
     @NotBlank(message = "Fleet number is required")
