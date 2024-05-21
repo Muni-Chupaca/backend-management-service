@@ -6,7 +6,7 @@ spring:
     name: VEHICLE-MANAGEMENT-SERVICE
 
   datasource:
-    url: jdbc:mysql://s-mysql.mysql.database.azure.com:3306/vehicle_management?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://s-mysql.mysql.database.azure.com:3306/vehicle_management?useSSL=true&serverTimezone=UTC
     username: wilverar
     password: warraw*280101
     driver-class-name: com.mysql.cj.jdbc.Driver
