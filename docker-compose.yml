@@ -9,10 +9,6 @@ services:
       - 8080:8080
     expose:
       - 8080
-    volumes:
-      - ./target:/app/target
-    environment:
-      - SPRING_PROFILES_ACTIVE=production
     networks:
       - internalnet
 

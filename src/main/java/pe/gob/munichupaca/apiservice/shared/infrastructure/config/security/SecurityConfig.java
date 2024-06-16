@@ -34,7 +34,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
     private final JwtUtil jwtUtil;
-    private final String ALLOWED_ORIGIN = "https://consult-mch.web.app";
+    private final String[] ALLOWED_ORIGIN = { "https://consult-mch.web.app", "https://consult-mch.firebaseapp.com" };
     //private final String ALLOWED_ORIGIN = "http://localhost:4200";
 
     @Bean
@@ -47,7 +47,7 @@ public class SecurityConfig {
         return httpSecurity
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration corsConfig = new CorsConfiguration();
-                    corsConfig.setAllowedOrigins(Collections.singletonList(ALLOWED_ORIGIN));
+                    corsConfig.setAllowedOrigins(Arrays.asList(ALLOWED_ORIGIN));
                     corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
                     corsConfig.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
                     corsConfig.setAllowCredentials(true);
